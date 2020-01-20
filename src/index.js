@@ -7,6 +7,7 @@ const Controller = (() => {
     const otherShip = Ship;
     myShip.init(5);
     otherShip.init(5);
+    return true;
   };
 
   return {
@@ -16,4 +17,4 @@ const Controller = (() => {
 
 Controller.init();
 
-export const start = () => 'Hello';
+export default Controller;
