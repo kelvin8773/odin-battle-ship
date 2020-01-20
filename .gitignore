@@ -1,2 +1,12 @@
-node_modules/
+# System Config
 .vscode/
+
+# Node Package
+node_modules/
+
+# Build files
+dist/main.js
+.env
+
+
+

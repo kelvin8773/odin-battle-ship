@@ -8,7 +8,7 @@
     "test-watch": "jest --watch",
     "build": "webpack --mode production",
     "dev": "webpack --watch --mode development",
-    "run": "live-server ./dis/"
+    "run": "live-server ./dist/"
   },
   "keywords": [
     "odin project",
