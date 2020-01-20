@@ -1,7 +1,7 @@
 const Ship = (() => {
-  const ship = new Array();
+  const ship = [];
   const init = (size) => {
-    for (let i = 0; i < size; i++) {
+    for (let i = 0; i < size; i += 1) {
       ship[i] = 'new';
     }
   };
@@ -15,7 +15,7 @@ const Ship = (() => {
     return false;
   };
 
-  const isSunk = () => ship.every(unit => unit === 'hit');
+  const isSunk = () => ship.every((unit) => unit === 'hit');
 
   return {
     init,

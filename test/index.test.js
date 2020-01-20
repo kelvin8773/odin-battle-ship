@@ -1,5 +1,5 @@
 import { start } from '../src/index';
 
-test("Start Point", () => {
+test('Start Point', () => {
   expect(start()).toBe('Hello');
-})
+});
