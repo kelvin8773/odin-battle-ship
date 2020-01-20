@@ -13,7 +13,7 @@ const Controller = (() => {
   }
 })();
 
-Controller.ini();
+Controller.init();
 
 export const start = () => {
   return 'Hello';
