@@ -3,10 +3,8 @@ import './assets/stylesheet/style.sass';
 
 const Controller = (() => {
   const init = () => {
-    const myShip = Ship;
-    const otherShip = Ship;
-    myShip.init(5);
-    otherShip.init(5);
+    const myShip = Ship(3);
+    const otherShip = Ship(4);
     return true;
   };
 
