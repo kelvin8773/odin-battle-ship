@@ -29,11 +29,20 @@ const Player = () => {
     };
   };
 
+  const getPreviousStep = () => {
+    const preStep = steps[steps.length - 1].split('+');
+    return {
+      row: parseInt(preStep[0], 10),
+      col: parseInt(preStep[1], 10),
+    };
+  }
+
   return {
     steps,
     possibleSteps,
     check,
     getNextStep,
+    getPreviousStep,
   };
 };
 
