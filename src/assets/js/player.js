@@ -35,7 +35,7 @@ const Player = () => {
       row: parseInt(preStep[0], 10),
       col: parseInt(preStep[1], 10),
     };
-  }
+  };
 
   return {
     steps,
