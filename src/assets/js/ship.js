@@ -1,56 +1,44 @@
-const Ship = (type, position, direction) => {
-  const init = () => {
-    let size = 0;
+import _ from 'lodash';
+
+const Ship = (type) => {
+  const getShipLength = (type) => {
     switch (type) {
       case 'destroyer':
-        size = 1;
-        break;
+        return 1;
       case 'submarine':
-        size = 2;
-        break;
+        return 2;
       case 'battleship':
-        size = 3;
-        break;
+        return 3;
       case 'carrier':
-        size = 4;
-        break;
+        return 4;
     }
-    const array = new Array(size);
-    for (let i = 0; i < size; i += 1) {
-      array[i] = 'new';
-    }
-    return array;
   };
 
-  const units = init();
-
+  const length = getShipLength(type);
   const status = {
-    "type": type,
-    "position": position,
-    "direction": direction,
-    "size": units.length
+    normal: 0,
+    hit: -1
   };
 
-  const getStatus = () => status;
+  const units = new Array(length).fill(status.normal);
 
-  const length = () => units.length;
+  const coordinates = new Array(length);
 
-  const hit = (pos) => {
-    if (units[pos - 1] === 'new') {
-      units[pos - 1] = 'hit';
-      return true;
-    }
-    return false;
-  };
+  const setCoordinate = (pos, row, col) => coordinates[pos] = [row, col];
 
-  const isSunk = () => units.every((unit) => unit === 'hit');
+  const hit = (pos) => units[pos - 1] = status.hit;
+
+  const isSunk = () => units.every(unit => unit === status.hit);
 
   return {
-    getStatus,
     length,
+    coordinates,
+    setCoordinate,
+    units,
     hit,
     isSunk,
   };
+
 };
 
 export default Ship;

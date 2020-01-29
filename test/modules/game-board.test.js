@@ -1,14 +1,24 @@
 import GameBoard from '../../src/assets/js/game-board';
 
-test('GameBoard init Test', () => {
-  const myBoard = GameBoard('player1', 10);
-  const yourBoard = GameBoard('player2', 10);
+test('GameBoard receive Attack', () => {
+  const myBoard = GameBoard();
 
-  expect(myBoard.getPlayer()).toBe('player1');
-  expect(yourBoard.getPlayer()).toBe('player2');
+  myBoard.receiveAttack(2, 4);
+  expect(myBoard.markers[2][4]).toBe(-1);
+});
 
-  expect(myBoard.getShip(2).getStatus().type).toBe('destroyer');
-  expect(myBoard.getShip(5).getStatus().type).toBe('submarine');
-  expect(yourBoard.getShip(8).getStatus().type).toBe('battleship');
+test('GameBoard place Ships & isAllSunk', () => {
+  const board = GameBoard();
+  expect(board.isAllSunk()).toBe(true);
+  board.placeShips();
+  expect(board.isAllSunk()).toBe(false);
+})
 
+test('GameBoard ships & markers', () => {
+  const board = GameBoard();
+  expect(board.ships.length).toBe(10);
+  expect(board.markers.length).toBe(10);
+  expect(board.ships[0].coordinates[0]).toBe(undefined);
+  board.placeShips();
+  expect(board.ships[0].coordinates[0].length).toBe(2);
 })
