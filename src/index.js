@@ -1,12 +1,11 @@
-import Ship from './assets/js/ship';
+import GameBoard from './assets/js/game-board';
 import './assets/stylesheet/style.sass';
 
 const Controller = (() => {
   const init = () => {
-    const myShip = Ship;
-    const otherShip = Ship;
-    myShip.init(5);
-    otherShip.init(5);
+    const myBoard = GameBoard();
+    myBoard.placeShips();
+
     return true;
   };
 

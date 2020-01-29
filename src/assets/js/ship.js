@@ -1,28 +1,42 @@
-const Ship = (() => {
-  const ship = [];
-  const init = (size) => {
-    for (let i = 0; i < size; i += 1) {
-      ship[i] = 'new';
+
+const Ship = (type) => {
+  const getShipLength = (type) => {
+    switch (type) {
+      case 'destroyer':
+        return 1;
+      case 'submarine':
+        return 2;
+      case 'battleship':
+        return 3;
+      case 'carrier':
+        return 4;
     }
   };
-  const length = () => ship.length;
 
-  const hit = (pos) => {
-    if (ship[pos - 1] === 'new') {
-      ship[pos - 1] = 'hit';
-      return true;
-    }
-    return false;
+  const length = getShipLength(type);
+  const status = {
+    normal: 0,
+    hit: -1,
   };
 
-  const isSunk = () => ship.every((unit) => unit === 'hit');
+  const units = new Array(length).fill(status.normal);
+
+  const coordinates = new Array(length);
+
+  const setCoordinate = (pos, row, col) => { coordinates[pos] = [row, col]; };
+
+  const hit = (pos) => { units[pos - 1] = status.hit; };
+
+  const isSunk = () => units.every((unit) => unit === status.hit);
 
   return {
-    init,
     length,
+    coordinates,
+    setCoordinate,
+    units,
     hit,
     isSunk,
   };
-})();
+};
 
 export default Ship;
