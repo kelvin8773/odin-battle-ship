@@ -1,5 +1,5 @@
-import { start } from '../src/index';
+import Controller from '../src/index';
 
-test("Start Point", () => {
-  expect(start()).toBe('Hello');
-})
+test('Controller Test', () => {
+  expect(Controller.init()).toBe(true);
+});
