@@ -77,7 +77,8 @@ const GameBoard = () => {
   };
 
   const receiveAttack = (row, col) => {
-    if (markers[row][col] === status.empty) {
+    if (markers[row][col] === status.empty
+      || markers[row][col] === status.around) {
       markers[row][col] = status.miss;
     } else if (markers[row][col] === status.fill) {
       markers[row][col] = status.hit;
@@ -94,6 +95,7 @@ const GameBoard = () => {
   };
 
   return {
+    status,
     markers,
     ships,
     placeShips,
