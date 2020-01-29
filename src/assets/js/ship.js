@@ -1,4 +1,3 @@
-import _ from 'lodash';
 
 const Ship = (type) => {
   const getShipLength = (type) => {
@@ -17,18 +16,18 @@ const Ship = (type) => {
   const length = getShipLength(type);
   const status = {
     normal: 0,
-    hit: -1
+    hit: -1,
   };
 
   const units = new Array(length).fill(status.normal);
 
   const coordinates = new Array(length);
 
-  const setCoordinate = (pos, row, col) => coordinates[pos] = [row, col];
+  const setCoordinate = (pos, row, col) => { coordinates[pos] = [row, col]; };
 
-  const hit = (pos) => units[pos - 1] = status.hit;
+  const hit = (pos) => { units[pos - 1] = status.hit; };
 
-  const isSunk = () => units.every(unit => unit === status.hit);
+  const isSunk = () => units.every((unit) => unit === status.hit);
 
   return {
     length,
@@ -38,7 +37,6 @@ const Ship = (type) => {
     hit,
     isSunk,
   };
-
 };
 
 export default Ship;

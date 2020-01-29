@@ -1,5 +1,5 @@
-import Ship from './ship';
 import _ from 'lodash';
+import Ship from './ship';
 
 const GameBoard = () => {
   const status = {
@@ -34,8 +34,7 @@ const GameBoard = () => {
         if (markers[r][c] === status.empty) markers[r][c] = status.around;
       }
     }
-
-  }
+  };
 
   const placeShip = (startRow, startCol, direction, ship) => {
     for (let i = 0; i < ship.length; i += 1) {
@@ -56,16 +55,15 @@ const GameBoard = () => {
       if (markers[row][col] === status.fill || markers[row][col] === status.around) return false;
     }
 
-    return { row: startRow, col: startCol, direction: direction };
-  }
+    return { row: startRow, col: startCol, direction };
+  };
 
   const placeShips = () => {
-    const randomIdx = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-      .sort((a, b) => 0.5 - Math.random());
+    const randomIdx = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].sort(() => 0.5 - Math.random());
 
     for (let i = 0; i < ships.length; i += 1) {
       const ship = ships[randomIdx[i]];
-      const length = ship.length;
+      const { length } = ship;
       let validPlace = false;
       while (validPlace === false) {
         const direction = _.random(0, 1) === 0 ? 'H' : 'V';
@@ -88,12 +86,12 @@ const GameBoard = () => {
 
   const isAllSunk = () => {
     let fillCount = 0;
-    markers.forEach(line => {
-      fillCount += line.filter(x => x === status.fill).length;
+    markers.forEach((line) => {
+      fillCount += line.filter((x) => x === status.fill).length;
     });
 
     return fillCount === 0;
-  }
+  };
 
   return {
     markers,
@@ -101,7 +99,7 @@ const GameBoard = () => {
     placeShips,
     receiveAttack,
     isAllSunk,
-  }
+  };
 };
 
 export default GameBoard;

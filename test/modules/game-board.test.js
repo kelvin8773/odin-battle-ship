@@ -12,7 +12,7 @@ test('GameBoard place Ships & isAllSunk', () => {
   expect(board.isAllSunk()).toBe(true);
   board.placeShips();
   expect(board.isAllSunk()).toBe(false);
-})
+});
 
 test('GameBoard ships & markers', () => {
   const board = GameBoard();
@@ -21,4 +21,4 @@ test('GameBoard ships & markers', () => {
   expect(board.ships[0].coordinates[0]).toBe(undefined);
   board.placeShips();
   expect(board.ships[0].coordinates[0].length).toBe(2);
-})
+});

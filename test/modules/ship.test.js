@@ -5,7 +5,7 @@ test('ship length', () => {
   expect(myShip.length).toBe(2);
 });
 
-test("ship coordinates", () => {
+test('ship coordinates', () => {
   const battleShip = Ship('battleship');
   battleShip.setCoordinate(0, 3, 4);
   expect(battleShip.coordinates[0]).toStrictEqual([3, 4]);
