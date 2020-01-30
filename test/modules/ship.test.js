@@ -8,19 +8,19 @@ test('ship length', () => {
 test('ship coordinates', () => {
   const battleShip = Ship('battleship');
   battleShip.setCoordinate(0, 3, 4);
-  expect(battleShip.coordinates[0]).toStrictEqual([3, 4]);
+  expect(battleShip.coordinates[0]).toStrictEqual("3+4");
 });
 
 test('ship hit', () => {
   const otherShip = Ship('carrier');
-  otherShip.hit(1);
-  otherShip.hit(4);
+  otherShip.hit(0);
+  otherShip.hit(3);
   expect(otherShip.units[0]).toBe(-1);
   expect(otherShip.units[3]).toBe(-1);
 });
 
 test('ship isSunk', () => {
   const sinkShip = Ship('destroyer');
-  sinkShip.hit(1);
+  sinkShip.hit(0);
   expect(sinkShip.isSunk()).toBe(true);
 });

@@ -42,7 +42,7 @@ hr {
 }
 
 span {
-  margin-right: 0.25rem;
+  margin-right: 0.2rem;
   color: lightgreen;
 }
 
@@ -59,8 +59,9 @@ th {
 
 td {
   border: 0.5px solid rgba(108, 161, 230, 0.15);
-  border-collapse: collapse;
-  width: 36px;
+  text-align: center;
+  // padding: 10px;
+  width: 32px;
   min-height: 18px;
 }
 
@@ -75,7 +76,49 @@ a:hover {
 }
 
 .game-score {
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   min-width: 4.3rem;
   margin: 2.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.status-empty {
+  background-color: white;
+}
+
+
+.status-fill {
+  background-color: rgba(135, 206, 250, 0.658);
+}
+
+.status-around {
+  background-color: rgba(211, 211, 211, 0.1);
+}
+
+.status-around::after {
+  content: "•";
+  color: rgba(211, 211, 211, 0.5);
+}
+
+.status-miss {
+  background-color: rgba(255, 208, 122, 0.1);
+}
+
+.status-miss::after {
+  content: "~";
+}
+
+.status-hit {
+  background-color: rgba(240, 128, 128, 0.75);
+}
+
+.status-hit::after {
+  content: "✕";
+}
+
+.ship-hit {
+  color: rgba(240, 128, 128, 0.75);
+}
+
+.ship-normal {
+  color: lightgreen;
 }

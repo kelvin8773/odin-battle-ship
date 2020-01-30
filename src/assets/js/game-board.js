@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import Ship from './ship';
 
-const GameBoard = () => {
+const GameBoard = (type) => {
   const status = {
     fill: 2,
     around: 1,
@@ -76,14 +76,28 @@ const GameBoard = () => {
     }
   };
 
+  const findShip = (row, col) => {
+    for (const ship of ships) {
+      const mark = row + '+' + col;
+      const pos = ship.coordinates.findIndex(x => x === mark);
+      if (pos >= 0) return [ship, pos]
+    }
+  };
+
   const receiveAttack = (row, col) => {
     if (markers[row][col] === status.empty
       || markers[row][col] === status.around) {
       markers[row][col] = status.miss;
     } else if (markers[row][col] === status.fill) {
       markers[row][col] = status.hit;
+      const result = findShip(row, col);
+      if (result) {
+        const [ship, pos] = result;
+        ship.hit(pos);
+      }
     }
   };
+
 
   const isAllSunk = () => {
     let fillCount = 0;
@@ -95,6 +109,7 @@ const GameBoard = () => {
   };
 
   return {
+    type,
     status,
     markers,
     ships,

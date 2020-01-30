@@ -23,13 +23,14 @@ const Ship = (type) => {
 
   const coordinates = new Array(length);
 
-  const setCoordinate = (pos, row, col) => { coordinates[pos] = [row, col]; };
+  const setCoordinate = (pos, row, col) => { coordinates[pos] = row + '+' + col; };
 
-  const hit = (pos) => { units[pos - 1] = status.hit; };
+  const hit = (pos) => { units[pos] = status.hit; };
 
   const isSunk = () => units.every((unit) => unit === status.hit);
 
   return {
+    status,
     length,
     coordinates,
     setCoordinate,

@@ -16,15 +16,15 @@
 
   <main class="container">
     <div class="row">
-      <div id="human-game-board" class="col-6 d-flex justify-content-evenly">
-        <div id="human-game-scores" class="game-score">
+      <div id="human" class="col-6 d-flex justify-content-evenly">
+        <div id="human-scores" class="game-score">
           <p><span>◼◼◼◼</span></p>
           <p><span>◼◼◼</span> <span>◼◼◼</span></p>
           <p><span>◼◼</span> <span>◼◼</span> <span>◼◼</span></p>
           <p><span>◼</span> <span>◼</span> <span>◼</span> <span>◼</span></p>
         </div>
 
-        <div>
+        <div id="human-game-board">
           <table id="human-table" class="">
             <tr>
               <th></th>
@@ -175,8 +175,8 @@
 
       </div>
 
-      <div id="computer-game-board" class="col-6 d-flex justify-content-evenly">
-        <div>
+      <div id="computer" class="col-6 d-flex justify-content-evenly">
+        <div id="computer-game-board">
           <table id="computer-table" class="">
             <tr>
               <th></th>
@@ -325,7 +325,7 @@
           <p class="text-center text-note">Computer's board</p>
         </div>
 
-        <div id="computer-game-scores" class="game-score">
+        <div id="computer-scores" class="game-score">
           <p><span>◼◼◼◼</span></p>
           <p><span>◼◼◼</span> <span>◼◼◼</span></p>
           <p><span>◼◼</span> <span>◼◼</span> <span>◼◼</span></p>
@@ -335,7 +335,13 @@
 
     </div>
     <div class="text-center">
-      <a id="start-button" href="#" class="button3"> Play Now</a>
+      <span>
+        <a id="start-button" href="#" class="button3">Play</a>
+      </span>
+
+      <span>
+        <a id="stop-button" href="#" class="button3" style="background-color: darkgoldenrod;">Stop</a>
+      </span>
     </div>
   </main>
 
