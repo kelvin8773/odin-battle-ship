@@ -15,6 +15,7 @@ const Controller = (() => {
     computerBoard.receiveAttack(row, col);
     UI.renderTable(computerBoard);
     UI.renderScores(computerBoard);
+    UI.updateMessage("Computer's Turn Now ...")
   };
 
   const runComputer = () => {
@@ -23,6 +24,7 @@ const Controller = (() => {
     humanBoard.receiveAttack(row, col);
     UI.renderTable(humanBoard);
     UI.renderScores(humanBoard);
+    UI.updateMessage("Your Turn Now ...")
   }
 
   const init = () => {
@@ -35,7 +37,7 @@ const Controller = (() => {
     UI.renderScores(humanBoard);
     UI.renderScores(computerBoard);
 
-    const humanGame = setInterval(runHuman, 1000 * 3);
+    const humanGame = setInterval(runHuman, 1000 * 2);
     const computerGame = setInterval(runComputer, 1000 * 3);
 
     document.getElementById('stop-button').addEventListener('click', () => {

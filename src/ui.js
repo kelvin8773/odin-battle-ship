@@ -1,4 +1,5 @@
 const UI = (() => {
+  const messageBar = document.getElementById('message-bar');
   const humanTable = document.getElementById('human-table');
   const computerTable = document.getElementById('computer-table');
   const humanScores = document.getElementById('human-scores');
@@ -75,10 +76,15 @@ const UI = (() => {
     }
   }
 
+  const updateMessage = msg => {
+    messageBar.innerText = msg;
+  }
+
 
   return {
     renderTable,
     renderScores,
+    updateMessage,
   }
 
 })();
