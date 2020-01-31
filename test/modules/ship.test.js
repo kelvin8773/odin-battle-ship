@@ -1,4 +1,5 @@
 import Ship from '../../src/assets/js/ship';
+import { STATUS } from '../../src/assets/js/constants';
 
 test('ship length', () => {
   const myShip = Ship('submarine');
@@ -15,8 +16,8 @@ test('ship hit', () => {
   const otherShip = Ship('carrier');
   otherShip.hit(0);
   otherShip.hit(3);
-  expect(otherShip.units[0]).toBe(-1);
-  expect(otherShip.units[3]).toBe(-1);
+  expect(otherShip.units[0]).toBe(STATUS.hit);
+  expect(otherShip.units[3]).toBe(STATUS.hit);
 });
 
 test('ship isSunk', () => {

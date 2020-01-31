@@ -1,3 +1,7 @@
+import {
+  STATUS, NUMBERS_LABEL, CHARS_LABEL
+} from './assets/js/constants'
+
 const UI = (() => {
   const messageBar = document.getElementById('message-bar');
   const humanTable = document.getElementById('human-table');
@@ -5,8 +9,31 @@ const UI = (() => {
   const humanScores = document.getElementById('human-scores');
   const computerScores = document.getElementById('computer-scores');
 
-  const labelChars = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-  const labelNumbers = [' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  const renderCell = (status, row, col, type) => {
+    const table = type === 'Human' ? humanTable : computerTable;
+    const cells = table.querySelectorAll('.cell');
+
+    cells.forEach(cell => {
+      if (cell.getAttribute('row') == row && cell.getAttribute('col') == col) {
+        switch (status) {
+          case STATUS.fill:
+            cell.className = type === 'Human' ? 'status-fill cell' : 'cell';
+            break;
+          case STATUS.around:
+            cell.className = 'cell';
+            break;
+          case STATUS.miss:
+            cell.className = 'status-miss cell';
+            break;
+          case STATUS.hit:
+            cell.className = 'status-hit cell';
+            break;
+          default:
+            cell.className = 'status-empty cell';
+        }
+      }
+    })
+  };
 
   const renderTable = board => {
     const table = board.type === 'Human' ? humanTable : computerTable;
@@ -15,29 +42,30 @@ const UI = (() => {
       const row = document.createElement('tr');
       for (let c = 0; c <= 10; c += 1) {
         const block = (r === 0 || c === 0) ? document.createElement('th') : document.createElement('td');
-        if (r === 0) block.innerText = labelChars[c];
-        if (c === 0) block.innerText = labelNumbers[r];
+        block.setAttribute('row', r - 1);
+        block.setAttribute('col', c - 1);
+        if (r === 0) block.innerText = CHARS_LABEL[c];
+        if (c === 0) block.innerText = NUMBERS_LABEL[r];
 
         if (r !== 0 && c !== 0) {
           const status = board.markers[r - 1][c - 1];
           switch (status) {
-            case board.status.fill:
-              if (board.type === 'Human')
-                block.className = 'status-fill';
+            case STATUS.fill:
+              block.className = board.type === 'Human' ? 'status-fill cell' : 'cell';
               break;
-            case board.status.around:
-              if (board.type === 'Human')
-                block.className = 'status-around';
+            case STATUS.around:
+              block.className = 'cell';
               break;
-            case board.status.miss:
-              block.className = 'status-miss';
+            case STATUS.miss:
+              block.className = 'status-miss cell';
               break;
-            case board.status.hit:
-              block.className = 'status-hit';
+            case STATUS.hit:
+              block.className = 'status-hit cell';
               break;
             default:
-              block.className = 'status-empty';
+              block.className = 'status-empty cell';
           }
+
         }
 
         row.appendChild(block);
@@ -61,7 +89,7 @@ const UI = (() => {
           const block = document.createElement('small');
           block.innerText = "◼";
           switch (unit) {
-            case -1:
+            case STATUS.hit:
               block.className = 'ship-hit';
               break;
             default:
@@ -77,11 +105,13 @@ const UI = (() => {
   }
 
   const updateMessage = msg => {
+    messageBar.className = msg.includes('win') ? 'text-note' : '';
     messageBar.innerText = msg;
   }
 
 
   return {
+    renderCell,
     renderTable,
     renderScores,
     updateMessage,

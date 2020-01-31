@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import GameBoard from '../../src/assets/js/game-board';
+import { STATUS } from '../../src/assets/js/constants';
 
 test('GameBoard place Ships & isAllSunk', () => {
   const board = GameBoard();
@@ -23,11 +24,11 @@ test('GameBoard receive Attack', () => {
   const col = _.random(9);
   myBoard.placeShips();
 
-  if (myBoard.markers[row][col] === myBoard.status.fill) {
+  if (myBoard.markers[row][col] === STATUS.fill) {
     myBoard.receiveAttack(row, col);
-    expect(myBoard.markers[row][col]).toBe(myBoard.status.hit);
+    expect(myBoard.markers[row][col]).toBe(STATUS.hit);
   } else {
     myBoard.receiveAttack(row, col);
-    expect(myBoard.markers[row][col]).toBe(myBoard.status.miss);
+    expect(myBoard.markers[row][col]).toBe(STATUS.miss);
   }
 });

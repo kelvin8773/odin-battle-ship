@@ -9,41 +9,67 @@ const Controller = (() => {
   const humanBoard = GameBoard('Human');
   const computerBoard = GameBoard('Computer');
 
-  const runHuman = () => {
-    const { row, col } = human.getNextStep();
-    human.check(row, col);
-    computerBoard.receiveAttack(row, col);
-    UI.renderTable(computerBoard);
-    UI.renderScores(computerBoard);
-    UI.updateMessage("Computer's Turn Now ...")
-  };
+  const button = document.getElementById('start-button');
+  let gameOver = false;
 
-  const runComputer = () => {
-    const { row, col } = computer.getNextStep();
-    computer.check(row, col);
-    humanBoard.receiveAttack(row, col);
-    UI.renderTable(humanBoard);
-    UI.renderScores(humanBoard);
-    UI.updateMessage("Your Turn Now ...")
+  const showWinMessage = (winner) => {
+    const msg = winner === 'Human' ? 'Congrats, You win!' : 'Sorry, Computer won! ....';
+    UI.updateMessage(msg);
   }
 
-  const init = () => {
-    humanBoard.placeShips();
-    computerBoard.placeShips();
-
-    UI.renderTable(humanBoard);
-    UI.renderTable(computerBoard);
-
+  const computerRun = () => {
+    const { row, col } = computer.getNextStep();
+    computer.check(row, col);
+    const status = humanBoard.receiveAttack(row, col);
+    UI.renderCell(status, row, col, 'Human');
     UI.renderScores(humanBoard);
-    UI.renderScores(computerBoard);
 
-    const humanGame = setInterval(runHuman, 1000 * 2);
-    const computerGame = setInterval(runComputer, 1000 * 3);
+    UI.updateMessage("Your turn now ... ");
+    gameOver = humanBoard.isAllSunk();
+    if (gameOver) showWinMessage('Computer');
+  };
 
-    document.getElementById('stop-button').addEventListener('click', () => {
-      clearInterval(humanGame);
-      clearInterval(computerGame);
-    })
+  const addCellsListener = () => {
+    const cells = document.getElementById('computer-table').querySelectorAll('.cell');
+
+    const handleClick = (e) => {
+      if (gameOver) return;
+      const row = e.target.getAttribute('row');
+      const col = e.target.getAttribute('col');
+      const status = computerBoard.receiveAttack(row, col);
+
+      human.check(row, col);
+      UI.renderCell(status, row, col, 'Computer');
+      UI.renderScores(computerBoard);
+      gameOver = computerBoard.isAllSunk();
+
+      if (gameOver) {
+        showWinMessage('Human');
+      } else {
+        UI.updateMessage("Computer is thinking .... ");
+        computerRun();
+      }
+    };
+
+    cells.forEach(cell => {
+      cell.addEventListener('click', (e) => handleClick(e));
+    });
+  };
+
+  const init = () => {
+    button.addEventListener('click', () => {
+
+      humanBoard.placeShips();
+      computerBoard.placeShips();
+
+      UI.renderTable(humanBoard);
+      UI.renderTable(computerBoard);
+
+      UI.renderScores(humanBoard);
+      UI.renderScores(computerBoard);
+
+      addCellsListener();
+    });
 
   };
 

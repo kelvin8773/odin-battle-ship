@@ -70,11 +70,11 @@ a {
 
 a:hover {
   color: limegreen;
-  font-weight: bold;
 }
 
 #message-bar {
   width: 35%;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2rem;
@@ -115,6 +115,10 @@ a:hover {
   content: "~";
 }
 
+.status-miss:hover {
+  cursor: not-allowed;
+}
+
 .status-hit {
   background-color: rgba(240, 128, 128, 0.75);
 }
@@ -123,10 +127,22 @@ a:hover {
   content: "✕";
 }
 
+.status-hit:hover {
+  cursor: not-allowed;
+}
+
 .ship-hit {
   color: rgba(240, 128, 128, 0.75);
 }
 
 .ship-normal {
   color: lightgreen;
+}
+
+#computer-table:hover {
+  cursor: pointer;
+}
+
+#human-table:hover {
+  cursor: not-allowed;
 }
