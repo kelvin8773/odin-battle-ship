@@ -65,7 +65,6 @@ const UI = (() => {
   };
 
   const renderScores = (board) => {
-    const { ships } = board;
     const scores = board.type === 'Human' ? humanScores : computerScores;
     scores.innerHTML = '';
 
@@ -74,7 +73,7 @@ const UI = (() => {
       const line = document.createElement('p');
       for (let j = 0; j <= i; j += 1) {
         const ship = document.createElement('span');
-        for (const unit of ships[idx].units) {
+        for (const unit of board.ships[idx].units) {
           const block = document.createElement('small');
           block.innerText = '◼';
           switch (unit) {
@@ -108,6 +107,7 @@ const UI = (() => {
         for (let c = col - 1; c <= col + 1; c += 1) {
           if (c > 9 || c < 0) continue;
           if (board.markers[r][c] === STATUS.around) {
+            board.markers[r][c] = STATUS.reveal;
             renderCell(STATUS.around, r, c, board.type);
           }
         }

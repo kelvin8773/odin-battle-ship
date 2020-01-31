@@ -14,7 +14,7 @@ const Controller = (() => {
   };
 
   const computerRun = (computer, humanBoard) => {
-    const { row, col } = computer.getNextStep();
+    const [row, col] = computer.getNextStep(humanBoard);
     const status = humanBoard.receiveAttack(row, col);
 
     if (status === STATUS.hit) {
@@ -22,7 +22,7 @@ const Controller = (() => {
       if (ship.isSunk()) UI.renderShipAround(humanBoard, ship);
     };
 
-    computer.check(row, col);
+    computer.check(status, row, col);
     UI.renderCell(status, row, col, 'Human');
     UI.renderScores(humanBoard);
 
@@ -42,12 +42,14 @@ const Controller = (() => {
 
       if (status === STATUS.hit) {
         const ship = computerBoard.findShip(row, col)[0];
-        if (ship.isSunk()) UI.renderShipAround(computerBoard, ship);
+        if (ship.isSunk()) {
+          UI.renderShipAround(computerBoard, ship);
+          UI.renderScores(computerBoard);
+        }
       };
 
       human.check(row, col);
       UI.renderCell(status, row, col, 'Computer');
-      UI.renderScores(computerBoard);
       gameOver = computerBoard.isAllSunk();
 
       if (gameOver) {

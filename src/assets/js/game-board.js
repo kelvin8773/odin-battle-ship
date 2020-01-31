@@ -79,7 +79,8 @@ const GameBoard = (type) => {
 
   const receiveAttack = (row, col) => {
     if (markers[row][col] === STATUS.empty
-      || markers[row][col] === STATUS.around) {
+      || markers[row][col] === STATUS.around
+      || markers[row][col] === STATUS.reveal) {
       markers[row][col] = STATUS.miss;
     } else if (markers[row][col] === STATUS.fill) {
       markers[row][col] = STATUS.hit;
