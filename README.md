@@ -1,5 +1,5 @@
 <h1 align="center">Welcome to odin-battle-ship 👋</h1>
-<p>
+<p align="center">
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
@@ -7,7 +7,10 @@
   <a href="https://twitter.com/kelvin9877" target="_blank">
     <img alt="Twitter: kelvin9877" src="https://img.shields.io/twitter/follow/kelvin9877.svg?style=social" />
   </a>
+  
 </p>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e87bae3c-6191-41a1-acef-5132d171c053/deploy-status)](https://app.netlify.com/sites/battleshipgame/deploys)
 
 > An Odin Project Assignment for practice Unit Testing and TDD method.
 
