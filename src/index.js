@@ -10,7 +10,7 @@ const Controller = (() => {
   const showWinMessage = (winner) => {
     const msg = winner === 'Human' ? 'Congrats, You win!' : 'Sorry, Computer won! ....';
     UI.updateMessage(msg);
-  }
+  };
 
   const computerRun = (computer, humanBoard) => {
     const { row, col } = computer.getNextStep();
@@ -19,7 +19,7 @@ const Controller = (() => {
     UI.renderCell(status, row, col, 'Human');
     UI.renderScores(humanBoard);
 
-    UI.updateMessage("Your turn now ... ");
+    UI.updateMessage('Your turn now ... ');
     gameOver = humanBoard.isAllSunk();
     if (gameOver) showWinMessage('Computer');
   };
@@ -41,12 +41,12 @@ const Controller = (() => {
       if (gameOver) {
         showWinMessage('Human');
       } else {
-        UI.updateMessage("Computer is thinking .... ");
+        UI.updateMessage('Computer is thinking .... ');
         computerRun(computer, humanBoard);
       }
     };
 
-    cells.forEach(cell => {
+    cells.forEach((cell) => {
       cell.addEventListener('click', (e) => handleClick(e));
     });
   };
@@ -70,7 +70,6 @@ const Controller = (() => {
 
       runGame(human, computer, humanBoard, computerBoard);
     });
-
   };
 
   return {

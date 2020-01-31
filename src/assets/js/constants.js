@@ -7,11 +7,11 @@ const STATUS = {
 };
 
 const SHIP_TYPES = {
-  'carrier': 4,
-  'battleship': 3,
-  'submarine': 2,
-  'destroyer': 1,
-}
+  carrier: 4,
+  battleship: 3,
+  submarine: 2,
+  destroyer: 1,
+};
 
 const CHARS_LABEL = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 const NUMBERS_LABEL = [' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
@@ -22,4 +22,4 @@ export {
   CHARS_LABEL,
   NUMBERS_LABEL,
   SHIP_TYPES,
-}
+};

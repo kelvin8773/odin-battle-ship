@@ -9,7 +9,7 @@ test('ship length', () => {
 test('ship coordinates', () => {
   const battleShip = Ship('battleship');
   battleShip.setCoordinate(0, 3, 4);
-  expect(battleShip.coordinates[0]).toStrictEqual("3+4");
+  expect(battleShip.coordinates[0]).toStrictEqual('3+4');
 });
 
 test('ship hit', () => {

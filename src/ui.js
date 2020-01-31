@@ -1,6 +1,6 @@
 import {
-  STATUS, NUMBERS_LABEL, CHARS_LABEL
-} from './assets/js/constants'
+  STATUS, NUMBERS_LABEL, CHARS_LABEL,
+} from './assets/js/constants';
 
 const UI = (() => {
   const messageBar = document.getElementById('message-bar');
@@ -13,7 +13,7 @@ const UI = (() => {
     const table = type === 'Human' ? humanTable : computerTable;
     const cells = table.querySelectorAll('.cell');
 
-    cells.forEach(cell => {
+    cells.forEach((cell) => {
       if (cell.getAttribute('row') == row && cell.getAttribute('col') == col) {
         switch (status) {
           case STATUS.fill:
@@ -32,10 +32,10 @@ const UI = (() => {
             cell.className = 'status-empty cell';
         }
       }
-    })
+    });
   };
 
-  const renderTable = board => {
+  const renderTable = (board) => {
     const table = board.type === 'Human' ? humanTable : computerTable;
     table.innerHTML = '';
     for (let r = 0; r <= 10; r += 1) {
@@ -65,20 +65,18 @@ const UI = (() => {
             default:
               block.className = 'status-empty cell';
           }
-
         }
 
         row.appendChild(block);
       }
       table.appendChild(row);
     }
-
   };
 
-  const renderScores = board => {
-    const ships = board.ships;
+  const renderScores = (board) => {
+    const { ships } = board;
     const scores = board.type === 'Human' ? humanScores : computerScores;
-    scores.innerHTML = "";
+    scores.innerHTML = '';
 
     let idx = 0;
     for (let i = 0; i < 4; i += 1) {
@@ -87,27 +85,27 @@ const UI = (() => {
         const ship = document.createElement('span');
         for (const unit of ships[idx].units) {
           const block = document.createElement('small');
-          block.innerText = "◼";
+          block.innerText = '◼';
           switch (unit) {
             case STATUS.hit:
               block.className = 'ship-hit';
               break;
             default:
               block.className = 'ship-normal';
-          };
+          }
           ship.appendChild(block);
         }
-        idx = idx + 1;
+        idx += 1;
         line.appendChild(ship);
       }
       scores.appendChild(line);
     }
-  }
+  };
 
-  const updateMessage = msg => {
+  const updateMessage = (msg) => {
     messageBar.className = msg.includes('win') ? 'text-note' : '';
     messageBar.innerText = msg;
-  }
+  };
 
 
   return {
@@ -115,8 +113,7 @@ const UI = (() => {
     renderTable,
     renderScores,
     updateMessage,
-  }
-
+  };
 })();
 
 export default UI;
