@@ -1,0 +1,30 @@
+/* component customize */
+
+// button
+a.button3 {
+  display: inline-block;
+  padding: 1em 2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  color: #FFFFFF;
+  background-color: #4eb5f1;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+a.button3:hover {
+  color: rgba(223, 217, 217, 0.884);
+  box-shadow: 1px 1px 4px 0px rgba(32, 48, 50, 0.23);
+  cursor: pointer;
+  background-color: #4095c6;
+}
+
+@media all and (max-width:30em) {
+  a.button3 {
+    display: block;
+    margin: 0.2em auto;
+  }
+}
