@@ -1,19 +1,12 @@
 import _ from 'lodash';
 import Ship from './ship';
+import { STATUS, SHIP_TYPES } from './constants';
 
-const GameBoard = () => {
-  const status = {
-    fill: 2,
-    around: 1,
-    empty: 0,
-    miss: -1,
-    hit: -2,
-  };
-
-  const markers = Array.from(Array(10), () => Array(10).fill(status.empty));
+const GameBoard = (type) => {
+  const markers = Array.from(Array(10), () => Array(10).fill(STATUS.empty));
 
   const makeShips = () => {
-    const shipTypes = ['carrier', 'battleship', 'submarine', 'destroyer'];
+    const shipTypes = Object.keys(SHIP_TYPES);
     const ships = [];
     for (let i = 1; i <= 4; i += 1) {
       for (let j = 1; j <= i; j += 1) {
@@ -28,10 +21,10 @@ const GameBoard = () => {
 
   const markAround = (row, col) => {
     for (let r = row - 1; r <= row + 1; r += 1) {
-      if (r > 9 || r < 0) break;
+      if (r > 9 || r < 0) continue;
       for (let c = col - 1; c <= col + 1; c += 1) {
-        if (c > 9 || c < 0) break;
-        if (markers[r][c] === status.empty) markers[r][c] = status.around;
+        if (c > 9 || c < 0) continue;
+        if (markers[r][c] === STATUS.empty) markers[r][c] = STATUS.around;
       }
     }
   };
@@ -43,7 +36,7 @@ const GameBoard = () => {
 
       ship.setCoordinate(i, row, col);
       markAround(row, col);
-      markers[row][col] = status.fill;
+      markers[row][col] = STATUS.fill;
     }
   };
 
@@ -52,7 +45,7 @@ const GameBoard = () => {
       const row = (direction === 'H') ? startRow : startRow + i;
       const col = (direction === 'V') ? startCol : startCol + i;
       if (row > 9 || col > 9) return false;
-      if (markers[row][col] === status.fill || markers[row][col] === status.around) return false;
+      if (markers[row][col] === STATUS.fill || markers[row][col] === STATUS.around) return false;
     }
 
     return { row: startRow, col: startCol, direction };
@@ -76,26 +69,41 @@ const GameBoard = () => {
     }
   };
 
-  const receiveAttack = (row, col) => {
-    if (markers[row][col] === status.empty
-      || markers[row][col] === status.around) {
-      markers[row][col] = status.miss;
-    } else if (markers[row][col] === status.fill) {
-      markers[row][col] = status.hit;
+  const findShip = (row, col) => {
+    for (const ship of ships) {
+      const mark = `${row}+${col}`;
+      const pos = ship.coordinates.findIndex((x) => x === mark);
+      if (pos >= 0) return [ship, pos];
     }
+  };
+
+  const receiveAttack = (row, col) => {
+    if (markers[row][col] === STATUS.empty
+      || markers[row][col] === STATUS.around) {
+      markers[row][col] = STATUS.miss;
+    } else if (markers[row][col] === STATUS.fill) {
+      markers[row][col] = STATUS.hit;
+      const result = findShip(row, col);
+      if (result) {
+        const [ship, pos] = result;
+        ship.hit(pos);
+      }
+    }
+    return markers[row][col];
   };
 
   const isAllSunk = () => {
     let fillCount = 0;
     markers.forEach((line) => {
-      fillCount += line.filter((x) => x === status.fill).length;
+      fillCount += line.filter((x) => x === STATUS.fill).length;
     });
 
     return fillCount === 0;
   };
 
+
   return {
-    status,
+    type,
     markers,
     ships,
     placeShips,

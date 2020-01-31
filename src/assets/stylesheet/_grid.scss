@@ -1,0 +1,211 @@
+/*
+# Simple Grid
+A lightweight, responsive CSS grid  
+
+Developed by Zach Cole
+
+## Simple Grid and Simple Code
+
+Simple Grid is a mobile-first 12-column CSS grid system to make developing responsive websites easy and fast.
+
+All the code you need is simple and familiar. A parent container class contains the grid. Within the container are rows. Row classes denote rows of content, which can be filled with up to 12 columns. Columns must be nested within a row. 
+
+To define your column width, declare how many columns you want your content to take up on desktop and large screens. For example, if your content should take up 6 out of 12 columns (or half the container), your class name will be .col-6.
+
+If you don’t want columns to expand on mobile devices and small screens, simply add -sm to the end of your column class name. For example, if you want to have two blocks of content floating side-by-side on small screens, each would be given the class name .col-6-sm.
+
+Update: Grid styles are now available in SASS/SCSS. Hooray! Thanks to [shankariyerr](https://github.com/shankariyerr/) for contributing as well.
+
+Learn more and see code samples at: http://simplegrid.io
+
+*/
+
+$width: 96%;
+$gutter: 4%;
+$breakpoint-small: 35em; // 560px
+$breakpoint-med: 64em; // 1024px
+$breakpoint-large: 72em; // 1152px
+
+.container {
+  width: 96%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media only screen and (min-width: $breakpoint-small) {
+    width: 98%;
+  }
+
+  @media only screen and (min-width: $breakpoint-large) {
+    width: 96%;
+  }
+}
+
+.row {
+  position: relative;
+  width: 100%;
+}
+
+.row [class^="col"] {
+  float: left;
+  margin: 0.5rem 2%;
+  min-height: 0.125rem;
+}
+
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+  width: $width;
+}
+
+.col-1-sm {
+  width: ($width / 12) - ($gutter * 11 / 12);
+}
+
+.col-2-sm {
+  width: ($width / 6) - ($gutter * 10 / 12);
+}
+
+.col-3-sm {
+  width: ($width / 4) - ($gutter * 9 / 12);
+}
+
+.col-4-sm {
+  width: ($width / 3) - ($gutter * 8 / 12);
+}
+
+.col-5-sm {
+  width: ($width / (12 / 5)) - ($gutter * 7 / 12);
+}
+
+.col-6-sm {
+  width: ($width / 2) - ($gutter * 6 / 12);
+}
+
+.col-7-sm {
+  width: ($width / (12 / 7)) - ($gutter * 5 / 12);
+}
+
+.col-8-sm {
+  width: ($width / (12 / 8)) - ($gutter * 4 / 12);
+}
+
+.col-9-sm {
+  width: ($width / (12 / 9)) - ($gutter * 3 / 12);
+}
+
+.col-10-sm {
+  width: ($width / (12 / 10)) - ($gutter * 2 / 12);
+}
+
+.col-11-sm {
+  width: ($width / (12 / 11)) - ($gutter * 1 / 12);
+}
+
+.col-12-sm {
+  width: $width;
+}
+
+@media only screen and (min-width: $breakpoint-med) {
+  .col-1 {
+    width: ($width / 12) - ($gutter * 11 / 12);
+  }
+
+  .col-2 {
+    width: ($width / 6) - ($gutter * 10 / 12);
+  }
+
+  .col-3 {
+    width: ($width / 4) - ($gutter * 9 / 12);
+  }
+
+  .col-4 {
+    width: ($width / 3) - ($gutter * 8 / 12);
+  }
+
+  .col-5 {
+    width: ($width / (12 / 5)) - ($gutter * 7 / 12);
+  }
+
+  .col-6 {
+    width: ($width / 2) - ($gutter * 6 / 12);
+  }
+
+  .col-7 {
+    width: ($width / (12 / 7)) - ($gutter * 5 / 12);
+  }
+
+  .col-8 {
+    width: ($width / (12 / 8)) - ($gutter * 4 / 12);
+  }
+
+  .col-9 {
+    width: ($width / (12 / 9)) - ($gutter * 3 / 12);
+  }
+
+  .col-10 {
+    width: ($width / (12 / 10)) - ($gutter * 2 / 12);
+  }
+
+  .col-11 {
+    width: ($width / (12 / 11)) - ($gutter * 1 / 12);
+  }
+
+  .col-12 {
+    width: $width;
+  }
+
+  .hidden-sm {
+    display: block;
+  }
+}
+
+.d-flex {
+  display: block;
+
+  @media only screen and (min-width: $breakpoint-small) {
+    display: flex;
+  }
+
+  @media only screen and (min-width: $breakpoint-large) {
+    display: flex;
+  }
+}
+
+.justify-content-start {
+  justify-content: flex-start;
+}
+
+.justify-content-center {
+  justify-content: flex-center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.justify-content-evenly {
+  justify-content: space-evenly;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}

@@ -1,33 +1,13 @@
+import { STATUS, SHIP_TYPES } from './constants';
 
 const Ship = (type) => {
-  const getShipLength = (type) => {
-    switch (type) {
-      case 'destroyer':
-        return 1;
-      case 'submarine':
-        return 2;
-      case 'battleship':
-        return 3;
-      case 'carrier':
-        return 4;
-    }
-  };
-
+  const getShipLength = (type) => SHIP_TYPES[type];
   const length = getShipLength(type);
-  const status = {
-    normal: 0,
-    hit: -1,
-  };
-
-  const units = new Array(length).fill(status.normal);
-
+  const units = new Array(length).fill(STATUS.fill);
   const coordinates = new Array(length);
-
-  const setCoordinate = (pos, row, col) => { coordinates[pos] = [row, col]; };
-
-  const hit = (pos) => { units[pos - 1] = status.hit; };
-
-  const isSunk = () => units.every((unit) => unit === status.hit);
+  const setCoordinate = (pos, row, col) => { coordinates[pos] = `${row}+${col}`; };
+  const hit = (pos) => { units[pos] = STATUS.hit; };
+  const isSunk = () => units.every((unit) => unit === STATUS.hit);
 
   return {
     length,
