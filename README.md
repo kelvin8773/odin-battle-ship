@@ -10,11 +10,10 @@
   
 </p>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e87bae3c-6191-41a1-acef-5132d171c053/deploy-status)](https://app.netlify.com/sites/battleshipgame/deploys)
-
 > An Odin Project Assignment for practice Unit Testing and TDD method.
 
 ### ✨ [Demo](https://battleshipgame.netlify.com/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e87bae3c-6191-41a1-acef-5132d171c053/deploy-status)](https://app.netlify.com/sites/battleshipgame/deploys)
 
 ## Install
 
