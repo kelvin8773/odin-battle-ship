@@ -109,6 +109,7 @@ const GameBoard = (type) => {
     placeShips,
     receiveAttack,
     isAllSunk,
+    findShip,
   };
 };
 
