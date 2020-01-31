@@ -92,7 +92,6 @@ const GameBoard = (type) => {
     return markers[row][col];
   };
 
-
   const isAllSunk = () => {
     let fillCount = 0;
     markers.forEach((line) => {
@@ -102,9 +101,9 @@ const GameBoard = (type) => {
     return fillCount === 0;
   };
 
+
   return {
     type,
-    // STATUS,
     markers,
     ships,
     placeShips,

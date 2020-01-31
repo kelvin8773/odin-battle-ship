@@ -4,11 +4,6 @@ import UI from './ui';
 import './assets/stylesheet/style.scss';
 
 const Controller = (() => {
-  const human = Player();
-  const computer = Player();
-  const humanBoard = GameBoard('Human');
-  const computerBoard = GameBoard('Computer');
-
   const button = document.getElementById('start-button');
   let gameOver = false;
 
@@ -17,7 +12,7 @@ const Controller = (() => {
     UI.updateMessage(msg);
   }
 
-  const computerRun = () => {
+  const computerRun = (computer, humanBoard) => {
     const { row, col } = computer.getNextStep();
     computer.check(row, col);
     const status = humanBoard.receiveAttack(row, col);
@@ -29,7 +24,7 @@ const Controller = (() => {
     if (gameOver) showWinMessage('Computer');
   };
 
-  const addCellsListener = () => {
+  const runGame = (human, computer, humanBoard, computerBoard) => {
     const cells = document.getElementById('computer-table').querySelectorAll('.cell');
 
     const handleClick = (e) => {
@@ -47,7 +42,7 @@ const Controller = (() => {
         showWinMessage('Human');
       } else {
         UI.updateMessage("Computer is thinking .... ");
-        computerRun();
+        computerRun(computer, humanBoard);
       }
     };
 
@@ -58,6 +53,11 @@ const Controller = (() => {
 
   const init = () => {
     button.addEventListener('click', () => {
+      const human = Player();
+      const computer = Player();
+      const humanBoard = GameBoard('Human');
+      const computerBoard = GameBoard('Computer');
+      gameOver = false;
 
       humanBoard.placeShips();
       computerBoard.placeShips();
@@ -68,7 +68,7 @@ const Controller = (() => {
       UI.renderScores(humanBoard);
       UI.renderScores(computerBoard);
 
-      addCellsListener();
+      runGame(human, computer, humanBoard, computerBoard);
     });
 
   };
@@ -79,5 +79,3 @@ const Controller = (() => {
 })();
 
 Controller.init();
-
-export default Controller;
