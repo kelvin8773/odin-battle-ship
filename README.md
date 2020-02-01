@@ -1,4 +1,5 @@
-<h1 align="center">Welcome to odin-battle-ship 👋</h1>
+<h1 align="center">Welcome to BattleShip Game Project 👋</h1>
+
 <p align="center">
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
@@ -7,31 +8,73 @@
   <a href="https://twitter.com/kelvin9877" target="_blank">
     <img alt="Twitter: kelvin9877" src="https://img.shields.io/twitter/follow/kelvin9877.svg?style=social" />
   </a>
-  
+  <a href="https://app.netlify.com/sites/battleshipgame/deploys" target="_blank">
+    <img alt="Netlify Deploy Status(BattleShipGame)" src="https://api.netlify.com/api/v1/badges/e87bae3c-6191-41a1-acef-5132d171c053/deploy-status">
+  </a>
 </p>
 
-> An Odin Project Assignment for practice Unit Testing and TDD method.
+> This is an Odin Project assignment for practicing Unit Test and Testing Driven Development (TDD) methodologies combine some best practices in current Javascript coding trend (2020).
+
+[![battShip-screenShoot](./docs/battleship-game.png)](https://battleshipgame.netlify.com/)
 
 ### ✨ [Demo](https://battleshipgame.netlify.com/)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e87bae3c-6191-41a1-acef-5132d171c053/deploy-status)](https://app.netlify.com/sites/battleshipgame/deploys)
 
-## Install
+### Key Concepts
+* ES6 
+* Object Oriented Programming (OOP)
+* Testing Driven Development (TDD)
+* Model View Controller (MVC)
+* Factory Function
+
+### Tech Stacks
+* HTML/CSS/SASS
+* Javascript
+* Jest (Testing)
+* Webpack (Building)
+* ESlint (Syntax)
+
+## To Run Locally
+
+#### Install
 
 ```sh
 npm install
 ```
 
-## Usage
+#### Usage
 
 ```sh
 npm run start
 ```
+> Open `http://127.0.0.1:8080` in your browser.
 
-## Run tests
+## To Develop Locally
+
+#### Run tests
 
 ```sh
 npm run test
 ```
+> or continue run continually
+```sh
+npm run test-watch
+```
+
+#### Development Build
+```sh
+npm run watch
+```
+
+#### Production Build
+```sh
+npm run build
+```
+
+## 🤝 Contributing
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/kelvin8773/odin-battle-ship/issues).
+
 
 ## Author
 
