@@ -72,8 +72,10 @@ const GameBoard = (type) => {
   const findShip = (row, col) => {
     for (const ship of ships) {
       const mark = `${row}+${col}`;
-      const pos = ship.coordinates.findIndex((x) => x === mark);
-      if (pos >= 0) return [ship, pos];
+      for (let pos = 0; pos < ship.length; pos += 1) {
+        const cor = ship.coordinates[pos];
+        if (mark === `${cor[0]}+${cor[1]}`) return { ship: ship, pos: pos }
+      }
     }
   };
 
@@ -84,11 +86,8 @@ const GameBoard = (type) => {
       markers[row][col] = STATUS.miss;
     } else if (markers[row][col] === STATUS.fill) {
       markers[row][col] = STATUS.hit;
-      const result = findShip(row, col);
-      if (result) {
-        const [ship, pos] = result;
-        ship.hit(pos);
-      }
+      const { ship, pos } = findShip(row, col);
+      ship.hit(pos);
     }
     return markers[row][col];
   };

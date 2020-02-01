@@ -18,7 +18,7 @@ const Controller = (() => {
     const status = humanBoard.receiveAttack(row, col);
 
     if (status === STATUS.hit) {
-      const ship = humanBoard.findShip(row, col)[0];
+      const { ship } = humanBoard.findShip(row, col);
       if (ship.isSunk()) UI.renderShipAround(humanBoard, ship);
     };
 
@@ -41,7 +41,7 @@ const Controller = (() => {
       const status = computerBoard.receiveAttack(row, col);
 
       if (status === STATUS.hit) {
-        const ship = computerBoard.findShip(row, col)[0];
+        const { ship } = computerBoard.findShip(row, col);
         if (ship.isSunk()) {
           UI.renderShipAround(computerBoard, ship);
           UI.renderScores(computerBoard);

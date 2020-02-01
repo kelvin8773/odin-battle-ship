@@ -15,6 +15,11 @@ const Player = () => {
 
   const possibleSteps = getAllSteps();
 
+  const step2coordinate = (step) =>
+    [parseInt(step.split('+')[0], 10),
+    parseInt(step.split('+')[1], 10)]
+
+
   const check = (status, row, col) => {
     if (status === STATUS.hit) steps.push(`${status}+${row}+${col}`);
     _.remove(possibleSteps, (step) => step === `${row}+${col}`);
@@ -22,15 +27,12 @@ const Player = () => {
 
   const getNextStep = (board) => {
     const stepsCount = possibleSteps.length;
-    const step = possibleSteps[_.random(stepsCount - 1)].split('+');
-    let nextStep = [
-      parseInt(step[0], 10),
-      parseInt(step[1], 10),
-    ];
+    const step = possibleSteps[_.random(stepsCount - 1)];
+    let nextStep = step2coordinate(step);
 
     if (steps.length !== 0) {
       const { row, col } = getPreviousStep();
-      const ship = board.findShip(row, col)[0];
+      const { ship } = board.findShip(row, col);
 
       if (!ship.isSunk()) {
         const potentialSteps = [
@@ -39,6 +41,12 @@ const Player = () => {
           [row, col - 1],
           [row, col + 1]
         ];
+
+        for (let i = 0; i < ship.length; i += 1) {
+          if (ship.units[i] === STATUS.fill) {
+            potentialSteps.push(ship.coordinates[i])
+          }
+        }
 
         for (const step of potentialSteps) {
           const [r, c] = step;

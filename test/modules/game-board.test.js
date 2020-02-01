@@ -15,7 +15,7 @@ test('GameBoard ships & markers', () => {
   expect(board.markers.length).toBe(10);
   expect(board.ships[0].coordinates[0]).toBe(undefined);
   board.placeShips();
-  expect(board.ships[0].coordinates[0].length).toBe(3);
+  expect(board.ships[0].coordinates[0].length).toBe(2);
 });
 
 test('GameBoard receive Attack', () => {

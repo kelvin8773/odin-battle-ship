@@ -99,8 +99,7 @@ const UI = (() => {
 
   const renderShipAround = (board, ship) => {
     ship.coordinates.forEach(cor => {
-      const row = parseInt(cor.split('+')[0], 10);
-      const col = parseInt(cor.split('+')[1], 10);
+      const [row, col] = cor;
 
       for (let r = row - 1; r <= row + 1; r += 1) {
         if (r > 9 || r < 0) continue;
