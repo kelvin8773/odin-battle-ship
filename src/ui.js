@@ -98,7 +98,7 @@ const UI = (() => {
   };
 
   const renderShipAround = (board, ship) => {
-    ship.coordinates.forEach(cor => {
+    ship.coordinates.forEach((cor) => {
       const [row, col] = cor;
 
       for (let r = row - 1; r <= row + 1; r += 1) {
@@ -111,8 +111,8 @@ const UI = (() => {
           }
         }
       }
-    })
-  }
+    });
+  };
 
   return {
     renderCell,

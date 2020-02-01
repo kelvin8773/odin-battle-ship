@@ -20,7 +20,7 @@ const Controller = (() => {
     if (status === STATUS.hit) {
       const { ship } = humanBoard.findShip(row, col);
       if (ship.isSunk()) UI.renderShipAround(humanBoard, ship);
-    };
+    }
 
     computer.check(status, row, col);
     UI.renderCell(status, row, col, 'Human');
@@ -46,7 +46,7 @@ const Controller = (() => {
           UI.renderShipAround(computerBoard, ship);
           UI.renderScores(computerBoard);
         }
-      };
+      }
 
       human.check(row, col);
       UI.renderCell(status, row, col, 'Computer');

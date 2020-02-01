@@ -21,10 +21,12 @@ const GameBoard = (type) => {
 
   const markAround = (row, col) => {
     for (let r = row - 1; r <= row + 1; r += 1) {
-      if (r > 9 || r < 0) continue;
-      for (let c = col - 1; c <= col + 1; c += 1) {
-        if (c > 9 || c < 0) continue;
-        if (markers[r][c] === STATUS.empty) markers[r][c] = STATUS.around;
+      if (r <= 9 && r >= 0) {
+        for (let c = col - 1; c <= col + 1; c += 1) {
+          if (c <= 9 && c >= 0) {
+            if (markers[r][c] === STATUS.empty) markers[r][c] = STATUS.around;
+          }
+        }
       }
     }
   };
@@ -74,7 +76,7 @@ const GameBoard = (type) => {
       const mark = `${row}+${col}`;
       for (let pos = 0; pos < ship.length; pos += 1) {
         const cor = ship.coordinates[pos];
-        if (mark === `${cor[0]}+${cor[1]}`) return { ship: ship, pos: pos }
+        if (mark === `${cor[0]}+${cor[1]}`) return { ship, pos };
       }
     }
   };
