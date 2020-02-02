@@ -4,6 +4,7 @@ const STATUS = {
   empty: 0,
   miss: -1,
   hit: -2,
+  reveal: -3,
 };
 
 const SHIP_TYPES = {

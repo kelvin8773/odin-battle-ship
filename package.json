@@ -31,7 +31,6 @@
     "file-loader": "^5.0.2",
     "jest": "^24.9.0",
     "live-server": "^1.2.1",
-    "loadash": "^1.0.0",
     "readme-md-generator": "^1.0.0",
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",

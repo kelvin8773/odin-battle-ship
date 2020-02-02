@@ -16,11 +16,8 @@ const UI = (() => {
     cells.forEach((cell) => {
       if (cell.getAttribute('row') == row && cell.getAttribute('col') == col) {
         switch (status) {
-          case STATUS.fill:
-            cell.className = type === 'Human' ? 'status-fill cell' : 'cell';
-            break;
           case STATUS.around:
-            cell.className = 'cell';
+            cell.className = 'status-around cell';
             break;
           case STATUS.miss:
             cell.className = 'status-miss cell';
@@ -56,12 +53,6 @@ const UI = (() => {
             case STATUS.around:
               block.className = 'cell';
               break;
-            case STATUS.miss:
-              block.className = 'status-miss cell';
-              break;
-            case STATUS.hit:
-              block.className = 'status-hit cell';
-              break;
             default:
               block.className = 'status-empty cell';
           }
@@ -74,7 +65,6 @@ const UI = (() => {
   };
 
   const renderScores = (board) => {
-    const { ships } = board;
     const scores = board.type === 'Human' ? humanScores : computerScores;
     scores.innerHTML = '';
 
@@ -83,7 +73,7 @@ const UI = (() => {
       const line = document.createElement('p');
       for (let j = 0; j <= i; j += 1) {
         const ship = document.createElement('span');
-        for (const unit of ships[idx].units) {
+        for (const unit of board.ships[idx].units) {
           const block = document.createElement('small');
           block.innerText = '◼';
           switch (unit) {
@@ -107,12 +97,29 @@ const UI = (() => {
     messageBar.innerText = msg;
   };
 
+  const renderShipAround = (board, ship) => {
+    ship.coordinates.forEach((cor) => {
+      const [row, col] = cor;
+
+      for (let r = row - 1; r <= row + 1; r += 1) {
+        if (r > 9 || r < 0) continue;
+        for (let c = col - 1; c <= col + 1; c += 1) {
+          if (c > 9 || c < 0) continue;
+          if (board.markers[r][c] === STATUS.around) {
+            board.markers[r][c] = STATUS.reveal;
+            renderCell(STATUS.around, r, c, board.type);
+          }
+        }
+      }
+    });
+  };
 
   return {
     renderCell,
     renderTable,
     renderScores,
     updateMessage,
+    renderShipAround,
   };
 })();
 
