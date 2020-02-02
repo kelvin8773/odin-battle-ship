@@ -8,5 +8,9 @@ node_modules/
 dist/main.js
 .env
 
+# System Files
+.DS_Store
+
+
 
 

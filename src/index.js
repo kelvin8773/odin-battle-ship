@@ -2,6 +2,7 @@ import GameBoard from './assets/js/game-board';
 import Player from './assets/js/player';
 import UI from './ui';
 import './assets/stylesheet/style.scss';
+import { STATUS } from './assets/js/constants';
 
 const Controller = (() => {
   const button = document.getElementById('start-button');
@@ -13,9 +14,15 @@ const Controller = (() => {
   };
 
   const computerRun = (computer, humanBoard) => {
-    const { row, col } = computer.getNextStep();
-    computer.check(row, col);
+    const [row, col] = computer.getNextStep(humanBoard);
     const status = humanBoard.receiveAttack(row, col);
+
+    if (status === STATUS.hit) {
+      const { ship } = humanBoard.findShip(row, col);
+      if (ship.isSunk()) UI.renderShipAround(humanBoard, ship);
+    }
+
+    computer.check(status, row, col);
     UI.renderCell(status, row, col, 'Human');
     UI.renderScores(humanBoard);
 
@@ -33,9 +40,16 @@ const Controller = (() => {
       const col = e.target.getAttribute('col');
       const status = computerBoard.receiveAttack(row, col);
 
+      if (status === STATUS.hit) {
+        const { ship } = computerBoard.findShip(row, col);
+        if (ship.isSunk()) {
+          UI.renderShipAround(computerBoard, ship);
+          UI.renderScores(computerBoard);
+        }
+      }
+
       human.check(row, col);
       UI.renderCell(status, row, col, 'Computer');
-      UI.renderScores(computerBoard);
       gameOver = computerBoard.isAllSunk();
 
       if (gameOver) {
@@ -58,6 +72,7 @@ const Controller = (() => {
       const humanBoard = GameBoard('Human');
       const computerBoard = GameBoard('Computer');
       gameOver = false;
+      UI.updateMessage("Click 'Play' To start ...");
 
       humanBoard.placeShips();
       computerBoard.placeShips();
