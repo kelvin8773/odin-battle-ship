@@ -1,4 +1,7 @@
 @import './reset';
+@import './break_point';
+
+
 @import './grid';
 @import './component';
 @import './text';
@@ -10,7 +13,7 @@ body {
 }
 
 header {
-  margin: 1rem 2rem 1rem 2rem;
+  margin: 3rem 2rem;
 }
 
 h1,
@@ -27,7 +30,7 @@ p {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 600;
   margin: 10px;
   color: rgba(44, 87, 139, 0.55);
