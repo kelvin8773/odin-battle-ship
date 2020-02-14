@@ -5,29 +5,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+  <link rel="manifest" href="./favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
   <title>Battle Ship Game</title>
 </head>
 
 <body>
-  <header class="text-center">
-    <h1>⚔️ BattleShip Game 🛥</h1>
-    <a href="https://en.wikipedia.org/wiki/Battleship_(game)" class="text-note">Rule</a>
+  <header id="app-header" class="text-center">
+    <h1 id="app-title">BattleShip Game</h1>
+    <div id="message-bar" class="">
+      .
+    </div>
   </header>
 
-  <div id="message-bar" class="">
-    Click "Play" To start ...
-  </div>
-
-  <main class="container">
-    <div class="row">
-      <div id="human" class="col-6 d-flex justify-content-evenly">
+  <main id="app-content">
+    <div id="game-boards">
+      <div id="human">
         <div id="human-scores" class="game-score">
           <p><span>◼◼◼◼</span></p>
           <p><span>◼◼◼</span> <span>◼◼◼</span></p>
           <p><span>◼◼</span> <span>◼◼</span> <span>◼◼</span></p>
           <p><span>◼</span> <span>◼</span> <span>◼</span> <span>◼</span></p>
         </div>
-
         <div id="human-game-board">
           <table id="human-table" class="">
             <tr>
@@ -174,12 +179,11 @@
               <td></td>
             </tr>
           </table>
-          <p class="text-center text-note">Your board</p>
+          <p class="text-note">Your board</p>
         </div>
-
       </div>
 
-      <div id="computer" class="col-6 d-flex justify-content-evenly">
+      <div id="computer">
         <div id="computer-game-board">
           <table id="computer-table" class="">
             <tr>
@@ -326,7 +330,7 @@
               <td></td>
             </tr>
           </table>
-          <p class="text-center text-note">Computer's board</p>
+          <p class="text-note">Computer's board</p>
         </div>
 
         <div id="computer-scores" class="game-score">
@@ -338,20 +342,21 @@
       </div>
 
     </div>
-    <div class="text-center">
+
+    <div id="game-buttons" class="text-center">
       <a id="start-button" href="#" class="button3">Play</a>
+      <a href="https://en.wikipedia.org/wiki/Battleship_(game)" class="button3" target="_blank"
+        style="background-color: darksalmon;">Rule</a>
     </div>
+
   </main>
 
-  <hr>
-  <footer class="text-center text-footer container">
-    <p> Made by <a href="https://github.com/kelvin8773">Kelvin Liang</a> @2020 with ❤️</p>
-    <small>License - <a href="https://github.com/kelvin8773/odin-battle-ship/blob/master/LICENSE">MIT</a></small> -
-    <small>Source Code - <a href="https://github.com/kelvin8773/odin-battle-ship">Github</a> </small>
-    <br>
-    <small> All right Reserved By <a href="https://twitter.com/Kelvin9877">Kelvin</a> </small>
+  <footer id="app-footer" class="text-center text-footer container">
+    <hr>
+    <small> Handcrafted by <a href="https://twitter.com/Kelvin9877">Kelvin</a> @2020. </small>
+    -
+    <small><a href="https://github.com/kelvin8773/odin-battle-ship">Source Code</a> </small>
   </footer>
-
   <script src="main.js"></script>
 </body>
 

@@ -5,6 +5,29 @@ font-family: 'Ubuntu', sans-serif;
 font-family: 'Fira Sans', sans-serif;
 */
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+p {
+  margin-bottom: 0.1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: limegreen;
+}
+
+
 
 .text-center {
   text-align: center;
@@ -13,16 +36,16 @@ font-family: 'Fira Sans', sans-serif;
 .text-footer {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 0.8rem;
-  color: rgba(137, 151, 168, 0.2);
+  color: rgba(137, 151, 168, 0.6);
   font-weight: 400;
   font-style: italic;
   line-height: 1.5rem;
 }
 
 .text-note {
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-top: 0.5rem;
   color: lightsalmon;
   font-style: italic;
-  line-height: 2rem;
+  line-height: 1.5rem;
 }

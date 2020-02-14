@@ -1,8 +1,9 @@
 import GameBoard from './assets/js/game-board';
 import Player from './assets/js/player';
 import UI from './ui';
-import './assets/stylesheet/style.scss';
 import { STATUS } from './assets/js/constants';
+
+import './assets/stylesheet/style.scss';
 
 const Controller = (() => {
   const button = document.getElementById('start-button');
@@ -27,6 +28,7 @@ const Controller = (() => {
     UI.renderScores(humanBoard);
 
     UI.updateMessage('Your turn now ... ');
+    UI.hideMessage(2);
     gameOver = humanBoard.isAllSunk();
     if (gameOver) showWinMessage('Computer');
   };
@@ -56,6 +58,7 @@ const Controller = (() => {
         showWinMessage('Human');
       } else {
         UI.updateMessage('Computer is thinking .... ');
+        UI.hideMessage(2);
         computerRun(computer, humanBoard);
       }
     };
@@ -72,7 +75,8 @@ const Controller = (() => {
       const humanBoard = GameBoard('Human');
       const computerBoard = GameBoard('Computer');
       gameOver = false;
-      UI.updateMessage("Click 'Play' To start ...");
+      UI.updateMessage("Start to Play Now ...");
+      UI.hideMessage(2);
 
       humanBoard.placeShips();
       computerBoard.placeShips();

@@ -93,8 +93,15 @@ const UI = (() => {
   };
 
   const updateMessage = (msg) => {
-    messageBar.className = msg.includes('win') ? 'text-note' : '';
+    messageBar.className = msg.includes('win') ? 'text-note show-info' : 'show-info';
     messageBar.innerText = msg;
+  };
+
+  const hideMessage = (time) => {
+    setTimeout(() => {
+      messageBar.innerText = '-';
+      messageBar.className = 'hide-info';
+    }, time * 1000);
   };
 
   const renderShipAround = (board, ship) => {
@@ -119,6 +126,7 @@ const UI = (() => {
     renderTable,
     renderScores,
     updateMessage,
+    hideMessage,
     renderShipAround,
   };
 })();
