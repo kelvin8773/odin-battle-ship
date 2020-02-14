@@ -15,7 +15,7 @@
 
 > This is an Odin Project assignment for practicing Unit Test and Testing Driven Development (TDD) methodologies combine some best practices in current Javascript coding trend (2020).
 
-[![battShip-screenShoot](./docs/battleship-game.jpg)](https://battleshipgame.netlify.com/)
+[![battShip-screenShoot](./docs/bs-showcase-web.jpg)](https://battleshipgame.netlify.com/)
 
 ### ✨ [Demo](https://battleshipgame.netlify.com/)
 
