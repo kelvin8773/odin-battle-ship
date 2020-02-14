@@ -173,39 +173,3 @@ $breakpoint-large: 72em; // 1152px
     display: block;
   }
 }
-
-.d-flex {
-  display: block;
-
-  @media only screen and (min-width: $breakpoint-small) {
-    display: flex;
-  }
-
-  @media only screen and (min-width: $breakpoint-large) {
-    display: flex;
-  }
-}
-
-.justify-content-start {
-  justify-content: flex-start;
-}
-
-.justify-content-center {
-  justify-content: flex-center;
-}
-
-.justify-content-between {
-  justify-content: space-between;
-}
-
-.justify-content-around {
-  justify-content: space-around;
-}
-
-.justify-content-evenly {
-  justify-content: space-evenly;
-}
-
-.justify-content-end {
-  justify-content: flex-end;
-}

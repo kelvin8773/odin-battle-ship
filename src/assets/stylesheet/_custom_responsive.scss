@@ -1,0 +1,123 @@
+@include tablet {
+  #app-header {
+
+    #app-title {
+      font-size: 2.5rem;
+      padding: 10px;
+    }
+
+    #message-bar {
+      margin-bottom: 1rem;
+    }
+  }
+
+  #app-content {
+    display: flex;
+    flex-flow: column;
+    flex-flow: column-reverse;
+    justify-content: flex-end;
+
+    #game-boards {
+      display: flex;
+      flex-flow: column-reverse;
+      align-items: center;
+      justify-content: flex-end;
+
+      #human {
+        #human-game-board {
+          // height: 35vh;
+          display: flex;
+          flex-flow: row;
+          justify-content: space-between;
+
+          p {
+            writing-mode: vertical-lr;
+            text-orientation: sideways;
+            padding-left: 1rem;
+          }
+        }
+      }
+
+      #computer {
+        flex-flow: row-reverse;
+
+        #computer-game-board {
+          // height: 35vh;
+          display: flex;
+          flex-flow: row;
+          justify-content: space-between;
+
+          p {
+            writing-mode: vertical-lr;
+            text-orientation: sideways;
+            padding-left: 1rem;
+
+          }
+        }
+      }
+
+    }
+  }
+}
+
+@include mobile {
+  #app-header {
+    #app-title {
+      // display: none;
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 100%;
+      z-index: -1;
+      opacity: 30%;
+    }
+
+    #message-bar {
+      padding: 1.2rem 0;
+
+      // background-color: hotpink;
+      color: lightslategrey;
+      font-size: 1.4rem;
+      width: 100%;
+      border-radius: 0;
+    }
+
+  }
+
+  #app-content {
+    justify-content: flex-end;
+    margin-bottom: 8rem;
+
+    #game-boards {
+      #human {
+        flex-flow: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        #human-game-board {
+          flex-flow: column-reverse;
+          justify-content: flex-end;
+
+          p {
+            writing-mode: initial;
+          }
+        }
+      }
+
+      #computer {
+        flex-flow: column-reverse;
+        align-items: flex-start;
+        justify-content: flex-end;
+
+        #computer-game-board {
+          flex-flow: column-reverse;
+          justify-content: flex-end;
+
+          p {
+            writing-mode: initial;
+          }
+        }
+      }
+    }
+  }
+}

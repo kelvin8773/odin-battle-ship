@@ -1,0 +1,176 @@
+$board-color: rgba(148, 133, 117, 0.5);
+$border-color: rgba(148, 133, 117);
+
+#app-header {
+  margin: 1.5rem auto;
+
+  #app-title {
+    font-size: 3rem;
+    font-weight: 600;
+    padding: 20px;
+    color: rgba(211, 51, 30, 0.884);
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.9);
+    /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgba(204, 91, 38, 0.712);
+  }
+
+  #message-bar {
+    width: 479px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 5px;
+    padding: 1rem;
+  }
+
+  .show-info {
+    background-color: rgba(255, 218, 185, 0.7);
+    color: rgba(236, 58, 34, 0.548);
+  }
+
+  .hide-info {
+    background: none;
+    color: rgba(58, 56, 56, 0.13);
+  }
+
+}
+
+#app-content {
+  #game-boards {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+
+    #human,
+    #computer {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-evenly;
+      padding: 1rem;
+
+      #human-game-board,
+      #computer-game-board {
+        height: 45vh;
+
+        p {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  #game-buttons {
+    .button3 {
+      padding: 1em 2em;
+      margin: 1rem;
+    }
+  }
+
+  span {
+    margin-right: 0.2rem;
+    color: lightgreen;
+    align-self: flex-start;
+  }
+
+  table {
+    max-width: 420px;
+    border-radius: 5px 5px 0 0;
+    border-collapse: collapse;
+    border: 0.5px solid $border-color;
+    background-image: linear-gradient(to bottom, white, rgba(163, 181, 202, 0.658), $board-color);
+  }
+
+  th {
+    padding: 10px 8px;
+    min-width: 18px;
+    max-width: 28px;
+    color: rgb(209, 106, 106);
+  }
+
+
+  td {
+    border: 0.5px dashed $border-color;
+    text-align: center;
+    width: 32px;
+    min-height: 18px;
+  }
+
+  .game-score {
+    font-size: 0.8rem;
+    min-width: 4.3rem;
+    margin: 2.5rem 0.5rem 0.5rem 0.5rem;
+  }
+
+  .status-empty {
+    background-color: none;
+  }
+
+
+  .status-fill {
+    background-color: rgba(236, 117, 117, 0.5);
+  }
+
+  .status-around {
+    background-color: rgba(46, 107, 177, 0.507);
+  }
+
+  .status-around::after {
+    content: "•";
+    color: rgba(151, 58, 112, 0.575);
+  }
+
+  .status-miss {
+    background-color: rgba(135, 202, 228, 0.493);
+  }
+
+  .status-miss::after {
+    content: "〰️";
+  }
+
+  .status-miss:hover {
+    cursor: not-allowed;
+  }
+
+  .status-hit {
+    background-color: rgba(236, 117, 117, 0.5);
+  }
+
+  .status-hit::after {
+    content: "💥";
+  }
+
+  .status-hit:hover {
+    cursor: not-allowed;
+  }
+
+  .ship-hit {
+    color: rgba(240, 128, 128, 0.75);
+  }
+
+  .ship-normal {
+    color: lightgreen;
+  }
+
+  #computer-table:hover {
+    cursor: pointer;
+  }
+
+  #human-table:hover {
+    cursor: not-allowed;
+  }
+
+}
+
+#app-footer {
+  hr {
+    margin: 3rem 4rem 1rem 4rem;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(189, 185, 185, 0.521), rgba(163, 107, 107, 0.4), rgba(206, 196, 196, 0.596));
+  }
+
+  @include tablet {
+    display: none;
+  }
+
+}
