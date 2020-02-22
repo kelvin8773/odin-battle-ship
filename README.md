@@ -13,11 +13,18 @@
   </a>
 </p>
 
-> This is an Odin Project assignment for practicing Unit Test and Testing Driven Development (TDD) methodologies, it combine some best practices  current recommended for Javascript (2020).
 
 [![battShip-screenShoot](./docs/bs-showcase-web.jpg)](https://battleship.kelvinliang.cn/)
 
+> This is an Odin Project assignment for practicing Unit Test and Testing Driven Development (TDD) methodologies, it combine some best practices currently recommended for Javascript (2020).
+
 ### ✨ [Demo](https://battleship.kelvinliang.cn/)
+
+### main features
+* Human vs. computer AI player.
+* Play at any size screen.
+* Score Board.
+* Clear UI Design.
 
 ### Key Concepts
 * Object Oriented Programming (OOP)
