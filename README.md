@@ -24,7 +24,7 @@
 * Human vs. computer AI player.
 * Play at any size screen.
 * Score Board.
-* Clear UI Design.
+* Appealing UI.
 
 ### Key Concepts
 * Object Oriented Programming (OOP)
@@ -79,7 +79,6 @@ npm run build
 Contributions, issues and feature requests are welcome!
 
 Feel free to check the [issues page](https://github.com/kelvin8773/odin-battle-ship/issues).
-
 
 ## Author
 
