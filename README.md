@@ -13,25 +13,23 @@
   </a>
 </p>
 
-> This is an Odin Project assignment for practicing Unit Test and Testing Driven Development (TDD) methodologies combine some best practices in current Javascript coding trend (2020).
+> This is an Odin Project assignment for practicing Unit Test and Testing Driven Development (TDD) methodologies, it combine some best practices  current recommended for Javascript (2020).
 
 [![battShip-screenShoot](./docs/bs-showcase-web.jpg)](https://battleship.kelvinliang.cn/)
 
 ### ✨ [Demo](https://battleship.kelvinliang.cn/)
 
 ### Key Concepts
-* ES6 
 * Object Oriented Programming (OOP)
 * Testing Driven Development (TDD)
 * Model View Controller (MVC)
 * Factory Function
 
 ### Tech Stacks
-* HTML/CSS/SASS
+* SASS
 * Javascript
 * Jest (Testing)
 * Webpack (Building)
-* ESlint (Syntax)
 
 ## To Run Locally
 
@@ -84,6 +82,9 @@ Feel free to check the [issues page](https://github.com/kelvin8773/odin-battle-s
 * Twitter: [@kelvin9877](https://twitter.com/kelvin9877)
 * Github: [@kelvin8773](https://github.com/kelvin8773)
 * LinkedIn: [@kelvin9877](https://linkedin.com/in/kelvin9877)
+* Email: [kelvinliang@yandex.com](mailto:kelvinliang@yandex.com)
+
+**I am available for hire/looking for next dev position.**
 
 ## Show your support
 
